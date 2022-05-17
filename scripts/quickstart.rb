@@ -1,9 +1,7 @@
 require 'cloudinary'
 
-# Cloudinary.config_from_url("cloudinary://API_KEY:API_SECRET@CLOUD_NAME")
-Cloudinary.config_from_url("cloudinary://381919499616147:wYlStJKsZj7e5_knU3MVFI2jk-M@jackie")
-Cloudinary.config do |config|
-  config.secure = true
+if Cloudinary.config.api_key.blank?
+  require '../config/config'
 end
 
 puts 'My cloud name is:' + Cloudinary.config.cloud_name
@@ -19,7 +17,9 @@ upload1=Cloudinary::Uploader.upload("https://res.cloudinary.com/demo/image/uploa
 
 # retrieve some attributes from the first upload response
 
-    puts "File size of the #{upload1['public_id']} image: #{upload1['bytes']/1024} KB"      
+    puts "File size of the #{upload1['public_id']} image: #{upload1['bytes']/1024} KB"     
+    
+    puts jj upload1
 
 # manually set the asset's public ID + allow overwriting asset with new versions.
 upload2=Cloudinary::Uploader.upload("https://res.cloudinary.com/demo/image/upload/coffee_cup.jpg", 
