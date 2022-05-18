@@ -18,8 +18,6 @@ upload1=Cloudinary::Uploader.upload("https://res.cloudinary.com/demo/image/uploa
 # retrieve some attributes from the first upload response
 
     puts "File size of the #{upload1['public_id']} image: #{upload1['bytes']/1024} KB"     
-    
-    puts jj upload1
 
 # manually set the asset's public ID + allow overwriting asset with new versions.
 upload2=Cloudinary::Uploader.upload("https://res.cloudinary.com/demo/image/upload/coffee_cup.jpg", 
@@ -70,18 +68,10 @@ asset_tags = asset_update['tags']
 
 puts "Asset tags: #{asset_tags}"  
 
-puts %{
-
-Generated transformation URLs: 
-================================
-
-}
-
 ## Generate transformation URLs for previously uploaded assets
 
 my_asset1 = upload1['public_id']+'.jpg'
 my_asset2 = upload2['public_id']+'.jpg'
-
 
 # scale and then crop the excess to 'fill' 640*200px banner-shape, focussed on the largest face (if any). 
 puts Cloudinary::Utils.cloudinary_url(my_asset1, :transformation=>
