@@ -2,8 +2,8 @@
 # In that file, replace the 'config_from_url' string value below with your 
 # account's credentials, available from your Cloudinary console.
 # 
-# Do not commit your config.rb file with real credentials to github or 
-# otherwise expose your API secret.
+# Important: Never store your config.rb file with real credentials to   
+# version control or otherwise expose your API secret.
 # ==========================================================================
 
 require 'cloudinary'
